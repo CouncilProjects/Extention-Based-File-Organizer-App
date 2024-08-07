@@ -1,12 +1,9 @@
 import java.awt.Color;
-import java.awt.Desktop;
 import java.awt.GridLayout;
-import java.io.IOException;
+
 import javax.swing.BorderFactory;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -20,34 +17,21 @@ public class helpFrame extends JFrame {
 
 	public helpFrame() {
 		getContentPane().setLayout(new GridLayout(2, 1));
-		JEditorPane label = new JEditorPane();
-		label.setContentType("text/html");
-		label.setText("<html>" + "This app allows you to organize your files based on their extensions.<br>"
+		JEditorPane pane = new JEditorPane();
+		pane.setContentType("text/html");
+		pane.setText("<html>" + "This app allows you to organize your files based on their extensions.<br>"
 				+ "First, choose a directory by pressing the <span style=\"color: green;\">Choose Directory</span> button.<br>"
 				+ "After you select a directory, a <span style=\"color: blue;\">list</span> with all the types of extensions present in the directory will be shown.<br>"
 				+ "After you select an extension, you will be prompted to give a name for the new directory.<br>"
-				+ "The app then makes a new directory inside the chosen directory and will move all the files of the selected extension there."
-				+ "<br><br> <span style=\"color: red;\">Warning</span><br>"
-				+ "This app does not check for already existing directories before creating new ones." + "</html>");
-		label.setEditable(false);
+				+ "The app then makes a new directory inside the chosen directory and will move all the files of the selected extension there.<br>"
+				+ "The <span style=\"color: orange;\">Allow Append</span> button when active places the files in the given directory"
+				+ " even if it already exists.<br>When off it will fail to move them if a directory with that name already exists"
+				+ "</html>");
+		pane.setEditable(false);
 
-		label.addHyperlinkListener(new HyperlinkListener() {
 
-			@Override
-			public void hyperlinkUpdate(HyperlinkEvent e) {
-				if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-					try {
-						Desktop.getDesktop().browse(e.getURL().toURI());
-					} catch (IOException | java.net.URISyntaxException ex) {
-
-					}
-				}
-
-			}
-		});
-
-		label.setVisible(true);
-		getContentPane().add(label);
+		pane.setVisible(true);
+		getContentPane().add(pane);
 
 		JPanel dicContain = new JPanel();
 		dicContain.setLayout(null);
@@ -61,11 +45,13 @@ public class helpFrame extends JFrame {
 		dicContain.add(disclamer);
 		dicContain.setBackground(Color.WHITE);
 		dicContain.setVisible(true);
-		getContentPane().add(dicContain);
+		
+		this.add(dicContain);
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		this.setTitle("Use");
 
-		this.setSize(500, 500);
+		this.setSize(800, 500);
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 }

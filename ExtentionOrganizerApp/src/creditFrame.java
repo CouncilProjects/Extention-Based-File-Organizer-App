@@ -16,7 +16,10 @@ public class creditFrame extends JFrame {
 
 	public creditFrame() {
 		JEditorPane label = new JEditorPane();
+		//Set the type to HTML so it displays it correctly
 		label.setContentType("text/html");
+		//Awful HTML but whatever
+		//ALL CREDITS ARE SHOWN AS INSTRUCTED PER THE ATTRIBUTION INSTRUCTIONS
 		label.setText("<html> <b>This App was created in JAVA</b><br><u>List of icon creators</u>"
 				+ "<br><a href=\"https://www.freepik.com/icons/jpeg\">Icon by iconixar</a>"
 				+ "<br><a href=\"https://icons8.com/icon/XEnbmdky0kzu/cisco-packet-tracer\">Cisco Packet Tracer</a> icon by <a href=\"https://icons8.com\">Icons8</a>"
@@ -44,7 +47,8 @@ public class creditFrame extends JFrame {
 				+ "<br> <a href=\"https://www.flaticon.com/free-icons/python\" title=\"python icons\">Python icons created by Freepik - Flaticon</a>"
 				+ "</html>");
 		label.setEditable(false);
-
+		
+		//Make links clickable
 		label.addHyperlinkListener(new HyperlinkListener() {
 
 			@Override
@@ -61,10 +65,12 @@ public class creditFrame extends JFrame {
 		});
 
 		label.setVisible(true);
+		
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		this.setTitle("Credits");
 		this.add(label);
 		this.setSize(500, 600);
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 }
