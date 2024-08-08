@@ -172,6 +172,7 @@ public class AppUI extends JFrame
 		// Panel 2 will have the list of buttons
 		buttonList = new JPanel();
 		buttonList.setBorder(BorderFactory.createLineBorder(Color.blue, 2));
+		
 		//GridLayout with 0 rows means as many as it needs. 
 		buttonList.setLayout(new GridLayout(0,1));
 		// the scroller will put buttonList (Button list) in a scrollable view.
